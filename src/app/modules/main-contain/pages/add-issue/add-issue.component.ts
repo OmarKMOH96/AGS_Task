@@ -894,6 +894,7 @@ export class AddIssueComponent implements OnInit {
     }
    return files
   }
+  // ************* Handler Upload Files **********
   dropped(files: NgxFileDropEntry[]) {
     let maxFileSize = 1024 * 1024 *1024
     this.files = files;
@@ -921,7 +922,7 @@ export class AddIssueComponent implements OnInit {
                 progressBar: true,
                 titleClass : 'toast-title',
                 progressAnimation: "increasing",
-                timeOut: 2000
+                timeOut: 3000
               });
             }
             /**
@@ -946,7 +947,7 @@ export class AddIssueComponent implements OnInit {
             progressBar: true,
             titleClass : 'toast-title',
             progressAnimation: "increasing",
-            timeOut: 2000
+            timeOut: 3000
           });
         }
       }
