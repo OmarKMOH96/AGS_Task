@@ -1,0 +1,213 @@
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#e73e51" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="tittle-card">
+                <p> Add Issue </p>
+            </div>
+        </div>
+        <div class="card-body">
+            <!-- issue Type section -->
+            <div class="Issue-type-section">
+                <fieldset class="checkbox-group">
+                    <div class="col-12 tittle-section">
+                        <p>Choose Issue Type</p>
+                    </div>
+                    <div class="checkbox">
+                        <label class="checkbox-wrapper">
+                       <input type="radio"type="radio" class="checkbox-input" name="issueType"  id="IssueType" (click)="chooseIssueType(false)"  [checked]="!issueModelView.issueType"/>
+                          <span class="checkbox-tittle">
+                              <span class="checkbox-icon">
+                                <img src="./assets/images/brands/brand1.png" alt="">
+                              </span>
+                             <span class="checkbox-label">Typical</span>
+                          </span>
+                    </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="checkbox-wrapper">
+                          <input type="radio" class="checkbox-input" name="issueType"  id="IssueType1" (click)="chooseIssueType(true)"    />
+                          <span class="checkbox-tittle">
+                            <span class="checkbox-icon">
+                              <img src="./assets/images/brands/brand2.png" alt="">
+                            </span>
+                            <span class="checkbox-label">Urgent</span>
+                         </span>
+                     </label>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- departments section-->
+            <div class="departments-section">
+                <div class="row">
+                    <div class="col-12 tittle-section">
+                        <p>Choose Department</p>
+                    </div>
+                    <div class="col-12 departments">
+                        <div class="department-item" *ngFor="let depatrment  of issueModelView.departments" (click)="chooseDepartment(depatrment)">
+                            <input class="checkbox-booking" type="radio" name="{{depatrment.name}}" [id]="depatrment.id" [checked]="issueModel.department?.name == depatrment.name">
+                            <label class="for-checkbox-booking" [id]="depatrment.id">
+                                  <i class='uil {{depatrment.icon}} mr-3'></i>
+                                  <span class="text">{{depatrment.name}}</span>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+            <!-- brands section -->
+            <div class="brands-section">
+                <fieldset class="checkbox-group">
+                    <div class="col-12 tittle-section">
+                        <p>Choose Brands</p>
+                    </div>
+                    <div class="checkbox" *ngFor="let brand of  brands">
+                        <label class="checkbox-wrapper">
+                       <input type="checkbox" class="checkbox-input" (change)="chooseBrands($event,brand)" />
+                          <span class="checkbox-tittle">
+                            <span class="checkbox-icon">
+                              <img src="{{brand.src}}" alt="{{brand.name}}-img">
+                            </span>
+                            <span class="checkbox-label">{{brand.name}}</span>
+                          </span>
+                   </label>
+                    </div>
+                    <div class="empty-img" *ngIf="brands.length <= 0">
+                        <img src="./assets/images/brands/brand4.png" alt="empty-img">
+                        <span>No Brands Available Yet! </span>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- users section-->
+            <div class="users-section">
+                <div class="col-12 tittle-section">
+                    <p>Choose Users</p>
+                </div>
+                <div class="grid">
+                    <label class="card" *ngFor="let user of users">
+                    <input class="card__input" type="checkbox" (change)="chooseUsers($event,user)"/>
+                      <div class="card__body">
+                        <div class="card__body-cover" >
+                          <img class="card__body-cover-image" src="{{user.src}}"/>
+                          <span class="card__body-cover-checkbox">
+                            <svg class="card__body-cover-checkbox--svg" viewBox="0 0 12 10">
+                              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                            </svg></span>
+                          </div>
+                      </div>
+                  </label>
+                </div>
+                <div class="empty-img" *ngIf="users.length <= 0">
+                    <img src="./assets/images/icons/no-user.svg" alt="empty-img">
+                    <span>No Users Available Yet! </span>
+                </div>
+            </div>
+            <!-- Additional Information  -->
+            <div class="information-section">
+                <div class="col-12 tittle-section">
+                    <p>Additional Information</p>
+                </div>
+                <form #issueFrom="ngForm" id="issueFrom">
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <mat-form-field class="example-form-field" appearance="outline">
+                                <mat-label>Issue Name</mat-label>
+                                <input matInput type="text" required name="issueName" [(ngModel)]="issueModelView.issueName">
+                                <button mat-button *ngIf="issueModelView.issueName" matSuffix mat-icon-button aria-label="Clear" (click)="issueModelView.issueName=''">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <mat-form-field class="example-form-field" appearance="outline">
+                                <mat-label>Choice One </mat-label>
+                                <input matInput type="text" name="choiceOne" [(ngModel)]="issueModelView.choiceOne">
+                                <button mat-button *ngIf="issueModelView.choiceOne" matSuffix mat-icon-button aria-label="Clear" (click)="issueModelView.choiceOne=''">
+                          <mat-icon>close</mat-icon>
+                      </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <mat-form-field class="example-form-field" appearance="outline">
+                                <mat-label>Choice Tow </mat-label>
+                                <input matInput type="text" name="choiceTow" [(ngModel)]="issueModelView.choiceTow">
+                                <button mat-button *ngIf="issueModelView.choiceTow" matSuffix mat-icon-button aria-label="Clear" (click)="issueModelView.choiceTow = ''">
+                                   <mat-icon>close</mat-icon>
+                               </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <mat-form-field class="example-form-field" appearance="outline">
+                                <mat-label>Choice Three</mat-label>
+                                <input matInput type="text" name="choiceThree" [(ngModel)]="issueModelView.choiceThree">
+                                <button mat-button *ngIf="issueModelView.choiceThree" matSuffix mat-icon-button aria-label="Clear" (click)="issueModelView.choiceThree = ''">
+                                    <mat-icon>close</mat-icon>
+                               </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-12 col-sm-12">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Note</mat-label>
+                                <textarea matInput #headerInput rows="4" minlength="1" name="note" [(ngModel)]="issueModelView.note" maxlength="400" placeholder="Ex. 200 Main St"></textarea>
+                            </mat-form-field>
+                            <mat-hint class="d-flex justify-content-between align-items-center mt-1" align="end">
+                                <span>Max 400 characters </span>
+                                <span>{{headerInput.value.length}}/400 </span>
+                            </mat-hint>
+                        </div>
+                        <div class="col-lg-12 col-sm-12 mt-2 mb-2">
+                            <mat-form-field class="example-full-width" appearance="outline">
+                                <mat-label>Deadline</mat-label>
+                                <input matInput [matDatepicker]="picker" required (dateChange)="chooseDeadline($event)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 tittle-section ">
+                            <p class="attachments">Attachments</p>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <div class="text-center">
+                                <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)">
+                                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                                        <!-- <img src="./assets/images/icon.png" alt="icon-upload"> Drop files to upload -->
+                                        <i class="uil uil-cloud-upload"></i>
+                                        <button type="button" (click)="openFileSelector()">Select</button>
+                                        <strong>OR Drop files to upload</strong>
+                                    </ng-template>
+                                </ngx-file-drop>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-sm-12 mt-3">
+                            <div class="text-center">
+                                <div *ngIf="viewFiles.length <= 0">
+                                    <img src="./assets/images/Empty.png" class="w-25" alt="Empty-photo">
+                                    <p class="text-secondary mb-0">No files selected</p>
+                                </div>
+                                <div class="upload-table " *ngIf="viewFiles.length > 0">
+                                    <ul class="list-group ">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let item of viewFiles; let i=index">
+                                            <div class="item-tittle">
+                                                <div class="fw-bold ">{{ item.name }}</div>
+                                                <div> {{humanFileSize(item.size )}}</div>
+                                            </div>
+                                            <span class="badge bg-danger " (click)="removeFile(i)"><i class="uil uil-trash-alt"></i></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="buttons-group">
+                <button class="noselect" from="issueFrom" (click)="restIssueForm(issueFrom)"><span class='text'>Reset</span><span class="icon"><i class="uil uil-times"></i></span></button>
+                <button class="noselect" (click)="saveDraft()"><span class='text'>Save</span><span class="icon"><i class="uil uil-check"></i></span></button>
+                <button class="noselect" form="issueFrom" [disabled]="issueFrom.invalid" (click)="addIssue()"><span class='text' >Submit</span><span class="icon"><i class="uil uil-arrow-right"></i></span></button>
+            </div>
+        </div>
+    </div>
+</div>

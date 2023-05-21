@@ -1,0 +1,143 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img alt="ags-Logo" src="./assets/images/logo.png" />
+    <div class="spacer"></div>
+    <div class="btn-profile">
+        <i class="uil uil-user-circle"></i>
+    </div>
+</div>
+<div class="container">
+    <!-- <div class="search_map_customers">
+            <div class="row">
+                <div class="col-3">
+                    <button>
+                      <i class="uil uil-user-circle"></i>
+                   </button>
+                </div>
+                <div class="col-3">
+                    <button>
+                      <i class="uil uil-question"></i>
+                   </button>
+                </div>
+                <div class="col-3">
+                    <button>
+                      <i class="uil uil-shop"></i>
+                    </button>
+                </div>
+                <div class="col-3">
+                    <button class="btn more" mdbBtn color="primary">
+                       <i class="uil uil-apps"></i>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    <div class="columns">
+        <div class="column" [routerLink]="['/']">
+            <button mat-raised-button matTooltipPosition="below" matTooltip="all issues" matTooltipClass="example-tooltip-red">
+                  <i class="uil uil-estate"></i>
+               </button>
+        </div>
+        <div class="column">
+            <button data-bs-toggle="modal" data-bs-target="#exampleModal" mat-raised-button matTooltipPosition="below" matTooltip="knowledge base about use issues" matTooltipClass="example-tooltip-red">
+                  <i class="fas fa-question"></i>
+             </button>
+        </div>
+        <div class="column" [routerLink]="['/add-issue']">
+            <button mat-raised-button matTooltipPosition="below" matTooltip="add new issue" matTooltipClass="example-tooltip-red">
+                  <i class="uil uil-plus"></i>
+              </button>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+<!-- Modal Knowledge Base-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Knowledge Base</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <mat-accordion class="example-headers-align">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <img src="./assets/images/icons/book-open.svg" alt="book-open">
+                            <span class="tittle-accordion">Add Issue</span>
+                        </mat-expansion-panel-header>
+                        <div class="accordion-body">
+                            <!-- <ul class="first-list">
+                                <li>
+                                    <small><i>*All Add-Ins are located in Add-Ins Store. This is only accessible by the admin and manager.</i></small>
+                                </li>
+                                <li>
+                                    <small><i>*Any Add-Ins that need to be activated MUST be included in the Company subscription plan.</i></small>
+                                </li>
+                            </ul> -->
+                            <div class="steps">
+                                <b>Steps: </b>
+                                <ol>
+                                    <li> Home Page><b>Add Icon</b>.</li>
+                                    <li> Choose Issue Type.</li>
+                                    <li> Choose the Specified Department .</li>
+                                    <li> Choose One or More Brands from The Previously selected Department. </li>
+                                    <li> Choose a User or more of the pre-selected Brands.</li>
+                                    <li> Enter Additional Information Related in Issue</li>
+                                    <li> Upload Attachments if You Want</li>
+                                </ol>
+                            </div>
+                            <div class="notes">
+                                <b>Notes: </b>
+                                <ul>
+                                    <li> If you click <b>Reset</b> button all previous information entered will remove </li>
+                                    <li> If you click <b>Save</b> button will save version of information as draft. </li>
+                                    <li> If you click <b>Submit</b> button will add new issue and redirection to issue list . </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <mat-accordion class="example-headers-align">
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <img src="./assets/images/icons/book-open.svg" alt="book-open">
+                            <span class="tittle-accordion">Important Notes</span>
+                        </mat-expansion-panel-header>
+                        <div class="accordion-body">
+                            <!-- <ul class="first-list">
+                              <li>
+                                  <small><i>*All Add-Ins are located in Add-Ins Store. This is only accessible by the admin and manager.</i></small>
+                              </li>
+                              <li>
+                                  <small><i>*Any Add-Ins that need to be activated MUST be included in the Company subscription plan.</i></small>
+                              </li>
+                          </ul> -->
+                            <div class="steps">
+                                <b>Notes: </b>
+                                <p>All added issues are kept locally,So to delete it follow the next :</p>
+                                <ol>
+                                    <li> Inspect Browsers><b>Application Tab</b>.</li>
+                                    <li> Search on Local Storage .</li>
+                                    <li> Clear <b>ONLY</b> Website Data .</li>
+                                    <li> Second method to delete them,Press on
+                                        <span class="badge" (click)="removeIssues()"><i class="uil uil-trash-alt"></i></span>
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="notes">
+                                <b>Design Notes: </b>
+                                <ul>
+                                    <li><b>Profile</b> Icon > right of navbar only for simulation </li>
+                                    <li> Desgin responisve on all devices! </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#e73e51" type="ball-clip-rotate-pulse" [fullScreen]="true">
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>

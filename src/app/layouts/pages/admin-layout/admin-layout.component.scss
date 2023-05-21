@@ -1,0 +1,170 @@
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: inherit;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    background-color: var(--second-color);
+    color: white;
+    font-weight: 600;
+    img {
+        margin: 0 16px;
+        filter: brightness(0) invert(1);
+    }
+    .btn-profile {
+        padding: 0 1.2rem;
+        .uil {
+            font-size: 2rem;
+        }
+    }
+}
+
+.columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 1rem auto;
+    .column {
+        flex: 33.33%;
+        text-align: center;
+        button {
+            font-weight: 500;
+            padding: 0;
+            color: #fff;
+            width: 50px;
+            min-width: 53px;
+            height: 48px;
+            background-color: var(--second-color);
+            border-radius: 4px;
+            border: 1px solid var(--second-color);
+            line-height: 1;
+            transition: all .6s ease-in-out;
+            i {
+                font-size: 1.5rem!important;
+            }
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+            }
+        }
+    }
+    .column:nth-child(1) {
+        text-align: left;
+    }
+    .column:nth-child(3) {
+        text-align: right;
+    }
+}
+
+mat-accordion::ng-deep {
+    mat-expansion-panel {
+        border-radius: 5px;
+        border: 2px solid var(--second-color);
+        box-shadow: none;
+        margin: 0.7rem auto;
+        mat-expansion-panel-header {
+            height: 41px;
+            background: #efefef !important;
+            color: #111;
+            border-radius: 0;
+            padding: 10px;
+            .tittle-accordion {
+                display: inline-block;
+                padding-left: 7px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        .mat-expansion-panel-header.mat-expanded {
+            height: 45px;
+            border-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .mat-expansion-panel-body {
+            padding: 8px !important;
+        }
+        .accordion-body {
+            .steps {
+                ol {
+                    margin-top: 0.25rem;
+                }
+            }
+            .notes {
+                ul {
+                    list-style-type: square !important;
+                    margin-bottom: 0;
+                    margin-top: 0.25rem;
+                }
+            }
+        }
+    }
+}
+
+.modal {
+    .modal-header {
+        padding: 10px 16px;
+        background-color: var(--second-color);
+        color: #fff;
+        h3 {
+            margin-bottom: 0;
+        }
+    }
+    .modal-body {
+        padding: 10px;
+        .badge {
+            background: transparent !important;
+            color: var(--second-color);
+            font-size: 22px;
+            padding: 0 10px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .toolbar {
+        height: 55px;
+        img {
+            margin: 0 16px 0 0;
+            width: 60%;
+        }
+        .btn-profile {
+            padding-right: 10px;
+        }
+    }
+    .columns {
+        .column {
+            flex: 33.33%;
+            text-align: center;
+            button {
+                width: 40px;
+                min-width: 40px;
+                height: 40px;
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+                }
+            }
+        }
+    }
+    mat-accordion::ng-deep {
+        mat-expansion-panel {
+            mat-expansion-panel-header {
+                .mat-expansion-panel-body {
+                    padding: 8px !important;
+                    font-size: 90%;
+                }
+            }
+        }
+    }
+}
