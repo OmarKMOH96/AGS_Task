@@ -1,5 +1,4 @@
 import { NgxPaginationModule } from 'ngx-pagination';
-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -11,6 +10,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { IssuePipe } from '../filters/issue.pipe';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     HomePageComponent,
@@ -25,7 +25,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     MaterialModule,
     NgxFileDropModule,
     NgxPaginationModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTooltipModule,
   ],
   exports: [
     CommonModule,

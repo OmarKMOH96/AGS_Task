@@ -22,6 +22,7 @@ export class AddIssueComponent implements OnInit {
   bufferBrands:any = []
   bufferUsers:any=[]
   issues:any[]
+  tooltipStatus;
   constructor(
     public datePipe: DatePipe,
     private toastrService: ToastrService,
